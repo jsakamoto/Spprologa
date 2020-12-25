@@ -1,0 +1,11 @@
+﻿@page "/"
+
+<h1>Hello, @query("input(name,Name).")!</h1>
+
+Welcome to your new app.
+
+<div>
+    <input type="text" @bind="@unifact["input(name,{0})."]" />
+</div>
+
+<SurveyPrompt Title="How is Blazor working for you?" />
