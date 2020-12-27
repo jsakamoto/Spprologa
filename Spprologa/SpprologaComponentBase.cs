@@ -15,48 +15,28 @@ namespace Spprologa
         {
         }
 
-        public FactBinder fact(string query)
+        private SpprologaRuntime GetSpprologaRuntime()
         {
             if (this.SpprologaRuntime == null) throw new Exception();
             this.SpprologaRuntime.EnsureConsulted(this);
+            return this.SpprologaRuntime;
+        }
 
+        public FactBinder fact(string query)
+        {
             if (!_FactBindersCache.TryGetValue(query, out var binder))
             {
-                _FactBindersCache.Add(query, binder = new FactBinder(this.SpprologaRuntime, query));
+                _FactBindersCache.Add(query, binder = new FactBinder(this.GetSpprologaRuntime(), query));
             }
             return binder;
         }
 
-        protected Solutions query(string query)
-        {
-            if (this.SpprologaRuntime == null) throw new Exception();
-            this.SpprologaRuntime.EnsureConsulted(this);
+        protected Solutions query(string query) => this.GetSpprologaRuntime().query(query);
 
-            return this.SpprologaRuntime.query(query);
-        }
+        protected EventCallback then(string query) => this.GetSpprologaRuntime().then(this, query);
 
-        protected EventCallback then(string query)
-        {
-            if (this.SpprologaRuntime == null) throw new Exception();
-            this.SpprologaRuntime.EnsureConsulted(this);
+        protected bool solved(string query) => this.GetSpprologaRuntime().solved(query);
 
-            return this.SpprologaRuntime.then(this, query);
-        }
-
-        protected bool solved(string query)
-        {
-            if (this.SpprologaRuntime == null) throw new Exception();
-            this.SpprologaRuntime.EnsureConsulted(this);
-
-            return this.SpprologaRuntime.solved(query);
-        }
-
-        protected bool unsolved(string query)
-        {
-            if (this.SpprologaRuntime == null) throw new Exception();
-            this.SpprologaRuntime.EnsureConsulted(this);
-
-            return this.SpprologaRuntime.unsolved(query);
-        }
+        protected bool unsolved(string query) => this.GetSpprologaRuntime().unsolved(query);
     }
 }
