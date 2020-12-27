@@ -1,32 +1,40 @@
-﻿using System;
+﻿using System.Linq;
 
 namespace Spprologa
 {
     public class FactBinder
     {
-        private SpprologaComponentBase Component;
-
-        public FactBinder(SpprologaComponentBase spprologaComponentBase)
+        public string? as_string
         {
-            this.Component = spprologaComponentBase;
+            get => this.Get();
+            set => this.Set("\"" + (value ?? "") + "\"");
         }
 
-        public string this[string query]
+        public int as_int
         {
-            get
-            {
-                Console.WriteLine($"factbinder[\"{query}\"].get()");
-                if (this.Component.SpprologaRuntime == null) return "";
-                var value = this.Component.query(string.Format(query, "X"));
-                return value?.ToString() ?? "";
-            }
-            set
-            {
-                Console.WriteLine($"factbinder[\"{query}\"].set({value})");
-                if (this.Component.SpprologaRuntime == null) return;
-                this.Component.query("retractall(" + string.Format(query, "_").TrimEnd('.') + ").");
-                this.Component.query("assert(" + string.Format(query, "'" + value + "'").TrimEnd('.') + ").");
-            }
+            get => int.TryParse(this.Get(), out var n) ? n : 0;
+            set => this.Set(value.ToString());
+        }
+
+        private readonly SpprologaRuntime _Runtime;
+
+        private readonly string _Query;
+
+        public FactBinder(SpprologaRuntime runtime, string query)
+        {
+            this._Runtime = runtime;
+            this._Query = query;
+        }
+
+        private string? Get()
+        {
+            return this._Runtime.query(string.Format(_Query, "X")).ToString();
+        }
+
+        private void Set(string value)
+        {
+            this._Runtime.query("retractall(" + string.Format(this._Query, "_").TrimEnd('.') + ").").FirstOrDefault();
+            this._Runtime.query("assert(" + string.Format(this._Query, value).TrimEnd('.') + ").").FirstOrDefault();
         }
     }
 }

@@ -8,6 +8,7 @@ namespace Spprologa.DependencyInjection
     {
         public static IServiceCollection AddSpprologa(this IServiceCollection services)
         {
+            services.TryAddScoped<SpprologaRuntime>();
             services.TryAddScoped(_ =>
             {
                 var prologEngine = new PrologEngine(persistentCommandHistory: false);

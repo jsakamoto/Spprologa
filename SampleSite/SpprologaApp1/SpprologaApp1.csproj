@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <None Remove="Pages\Counter.razor.prolog" />
+    <None Remove="Pages\Index.razor.prolog" />
   </ItemGroup>
 
   <ItemGroup>
