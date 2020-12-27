@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using NUnit.Framework;
 using Prolog;
@@ -104,5 +105,24 @@ namespace Spprologa.Test
             runtime.query("human(Name).")["Name"].Is("John Titor");
         }
 
+        [Test]
+        public void solved_Test()
+        {
+            var runtime = new SpprologaRuntime(new PrologEngine(persistentCommandHistory: false));
+            runtime.PrologEngine.ConsultFromString("solved(yes).");
+            runtime.solved("solved(yes).").IsTrue();
+            runtime.solved("solved(X).").IsTrue();
+            runtime.solved("solved(no).").IsFalse();
+        }
+
+        [Test]
+        public void unsolved_Test()
+        {
+            var runtime = new SpprologaRuntime(new PrologEngine(persistentCommandHistory: false));
+            runtime.PrologEngine.ConsultFromString("solved(yes).");
+            runtime.unsolved("solved(yes).").IsFalse();
+            runtime.unsolved("solved(X).").IsFalse();
+            runtime.unsolved("solved(no).").IsTrue();
+        }
     }
 }

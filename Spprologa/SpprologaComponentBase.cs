@@ -19,6 +19,7 @@ namespace Spprologa
         {
             if (this.SpprologaRuntime == null) throw new Exception();
             this.SpprologaRuntime.EnsureConsulted(this);
+
             if (!_FactBindersCache.TryGetValue(query, out var binder))
             {
                 _FactBindersCache.Add(query, binder = new FactBinder(this.SpprologaRuntime, query));
@@ -30,6 +31,7 @@ namespace Spprologa
         {
             if (this.SpprologaRuntime == null) throw new Exception();
             this.SpprologaRuntime.EnsureConsulted(this);
+
             return this.SpprologaRuntime.query(query);
         }
 
@@ -37,7 +39,24 @@ namespace Spprologa
         {
             if (this.SpprologaRuntime == null) throw new Exception();
             this.SpprologaRuntime.EnsureConsulted(this);
+
             return this.SpprologaRuntime.then(this, query);
+        }
+
+        protected bool solved(string query)
+        {
+            if (this.SpprologaRuntime == null) throw new Exception();
+            this.SpprologaRuntime.EnsureConsulted(this);
+
+            return this.SpprologaRuntime.solved(query);
+        }
+
+        protected bool unsolved(string query)
+        {
+            if (this.SpprologaRuntime == null) throw new Exception();
+            this.SpprologaRuntime.EnsureConsulted(this);
+
+            return this.SpprologaRuntime.unsolved(query);
         }
     }
 }

@@ -51,5 +51,15 @@ namespace Spprologa
                 prologEngine.GetEnumerator().FirstOrDefault();
             });
         }
+
+        public bool solved(string query)
+        {
+            return this.query(query).Any();
+        }
+
+        public bool unsolved(string query)
+        {
+            return !this.query(query).Any();
+        }
     }
 }
