@@ -18,7 +18,7 @@ Please visit also the URL below to the live demo site.
 ### Install project template
 
 ```shell
-$ dotnet new -i Spprologa.Templates
+$ dotnet new -i Spprologa.Templates::0.0.1-preview.1.0.0.0
 ```
 
 ### Create a new "Spprologa" app project , and run it.
