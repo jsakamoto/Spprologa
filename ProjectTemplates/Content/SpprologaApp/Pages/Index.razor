@@ -1,0 +1,9 @@
+﻿@page "/"
+
+<h1>Welcome to SpprologaApp!</h1>
+
+<h2>Hello, @query("your_name(X).")!</h2>
+
+<div>
+    <input type="text" @bind="@fact("your_name({0}).").as_string" @bind:event="oninput" />
+</div>

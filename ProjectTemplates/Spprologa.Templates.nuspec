@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Spprologa.Templates</id>
+    <version>0.0.1-preview.1.0.0.0</version>
+    <description>
+      Templates for "Spprologa" app to build client web apps with Prolog.
+    </description>
+    <authors>J.Sakamoto</authors>
+    <tags>aspnet templates blazor prolog spa</tags>
+    <license type="expression">MPL-2.0</license>
+    <projectUrl>https://github.com/jsakamoto/Spprologa</projectUrl>
+    <icon>nupkg-icon.png</icon>
+    <packageTypes>
+      <packageType name="Template" />
+    </packageTypes>
+  </metadata>
+  <files>
+    <file src="..\.assets\nupkg-icon.png" target="nupkg-icon.png" />
+    <file src="Content\" target="Content" exclude="**\obj\**\*.*;**\bin\**\*.*;**\.vs\**\*.*;**\*.suo;**\*.user"/>
+  </files>
+</package>
