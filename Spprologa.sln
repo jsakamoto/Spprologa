@@ -9,7 +9,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SampleSite", "SampleSite", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpprologaApp1", "SampleSite\SpprologaApp1\SpprologaApp1.csproj", "{83022EC3-FF29-4E95-858D-AEAE0FAB41F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spprologa.Test", "Spprologa.Test\Spprologa.Test.csproj", "{03958093-8A38-41B0-9406-19DB342FBDAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spprologa.Test", "Spprologa.Test\Spprologa.Test.csproj", "{03958093-8A38-41B0-9406-19DB342FBDAA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "- Solution Items -", "- Solution Items -", "{E7B92935-97C9-4E87-BE43-393140AE6F27}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\gh-pages.yml = .github\workflows\gh-pages.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "- README -", "- README -", "{ABBA8E49-8EF0-4675-AFCB-3BE7388E2B78}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		RELEASE-NOTES.txt = RELEASE-NOTES.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
