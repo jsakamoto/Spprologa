@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
 
-namespace Spprologa
+namespace Spprologa.Components
 {
     public class SpprologaComponentBase : ComponentBase
     {
