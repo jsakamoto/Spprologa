@@ -1,0 +1,23 @@
+﻿@if (this.Component != null)
+{
+    <div class="sample-code-control">
+        <a @onclick="@then("toggle_showhide_code.")">
+            <span class="oi oi-code" aria-hidden="true"></span>
+            <span class="caption">@query("code_control_text(X).")</span>
+        </a>
+    </div>
+
+    <div class="sample-code-container @query("code_container_css_class(X).")">
+
+        <div class="sample-code-section">
+            <div class="file-name">@(TypeName).razor.prolog</div>
+            <div class="code-container prolog"><pre>@PrologCode</pre></div>
+        </div>
+
+        <div class="sample-code-section">
+            <div class="file-name">@(TypeName).razor</div>
+            <div class="code-container razor html"><pre>@RazorCode</pre></div>
+        </div>
+
+    </div>
+}

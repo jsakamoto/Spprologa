@@ -4,6 +4,12 @@ namespace Spprologa
 {
     public class FactBinder
     {
+        public string? as_atom
+        {
+            get => this.Get()?.Trim('\'');
+            set => this.Set("\'" + (value ?? "") + "\'");
+        }
+
         public string? as_string
         {
             get => this.Get();

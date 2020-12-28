@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -8,6 +8,7 @@
     <base href="/" />
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/vs2015.min.css" rel="stylesheet">
     <link href="SpprologaApp1.styles.css" rel="stylesheet" />
 </head>
 
@@ -20,6 +21,19 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/prolog.min.js"></script>
+    <script>
+        function highlightCode() {
+            document.querySelectorAll('.code-container.prolog pre').forEach(block => {
+                hljs.highlightBlock(block);
+            });
+            document.querySelectorAll('.code-container.razor pre').forEach(block => {
+                hljs.highlightBlock(block);
+            });
+        }
+    </script>
 </body>
 
 </html>

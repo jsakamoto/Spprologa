@@ -9,6 +9,7 @@
     <None Remove="Pages\Index.razor.prolog" />
     <None Remove="Pages\MapColoring.razor.prolog" />
     <None Remove="Shared\NavMenu.razor.prolog" />
+    <None Remove="Shared\SampleCodeDisplay.razor.prolog" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,7 +25,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Spprologa\Spprologa.csproj" />
   </ItemGroup>
-  <ImportGroup>
 
-  </ImportGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\*.razor" />
+  </ItemGroup>
+
 </Project>
