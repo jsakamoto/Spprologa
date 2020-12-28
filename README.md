@@ -30,3 +30,11 @@ $ dotnet new spprologa
 ```shell
 $ dotnet watch run
 ```
+
+## Release Notes
+
+[Release notes is here.](https://github.com/jsakamoto/Spprologa/blob/main/RELEASE-NOTES.txt)
+
+## License
+
+[Mozilla Public License Version 2.0](https://github.com/jsakamoto/Spprologa/blob/main/LICENSE)
