@@ -1,4 +1,4 @@
-﻿count(1).
+﻿count(0).
 
 count_up :- 
 	count(X), 

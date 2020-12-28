@@ -2,18 +2,6 @@
 
 <h1>Counter</h1>
 
-<p>Current count: @currentCount</p>
 <p>Current count: @query("count(X).")</p>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
-
 <button class="btn btn-primary" @onclick="@(then("count_up."))">Click me</button>
-
-@code {
-    private int currentCount = 0;
-
-    private void IncrementCount()
-    {
-        currentCount++;
-    }
-}

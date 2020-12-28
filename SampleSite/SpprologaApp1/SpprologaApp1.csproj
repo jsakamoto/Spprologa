@@ -8,6 +8,7 @@
     <None Remove="Pages\Counter.razor.prolog" />
     <None Remove="Pages\Index.razor.prolog" />
     <None Remove="Pages\MapColoring.razor.prolog" />
+    <None Remove="Shared\NavMenu.razor.prolog" />
   </ItemGroup>
 
   <ItemGroup>
