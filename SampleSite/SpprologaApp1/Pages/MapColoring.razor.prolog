@@ -1,7 +1,10 @@
-﻿color(red).
+﻿% define that what colors are there.
+color(red).
 color(green).
 color(blue).
 color(yellow).
+
+% Initialize state.
 
 solved(no).
 
@@ -12,6 +15,7 @@ color_of_map(Alabama, Mississippi, Georgia, Tennessee, Florida) :-
     Tennessee = white, 
     Florida = white.
 
+% The implementation of the map coloring.
 resolve_map_coloring :-
     color(Alabama), color(Mississippi), color(Georgia), color(Tennessee), color(Florida),
     Tennessee \= Mississippi,
@@ -28,6 +32,7 @@ resolve_map_coloring :-
     retract(solved(_)),
     assert(solved(yes)), !.
 
+% Reset the state.
 reset_map_coloring :-
 
     retract(color_of_map(_, _, _, _, _)),
