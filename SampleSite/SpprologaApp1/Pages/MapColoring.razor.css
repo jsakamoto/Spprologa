@@ -1,0 +1,13 @@
+﻿.map-container {
+    margin-top: 32px;
+    text-align: center;
+}
+
+::deep text {
+    fill: #ccc;
+}
+
+::deep svg {
+    width: 80%;
+    height: 60vh;
+}

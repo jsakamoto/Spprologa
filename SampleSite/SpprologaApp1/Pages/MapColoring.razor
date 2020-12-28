@@ -1,0 +1,32 @@
+﻿@page "/mapcoloring"
+
+<h1>Map Coloring</h1>
+
+<div>
+    <button class="btn btn-primary" @onclick="@(then("resolve_map_coloring."))" disabled="@solved("solved(yes).")">Resolve</button>
+    <button class="btn btn-primary" @onclick="@(then("reset_map_coloring."))" disabled="@solved("solved(no).")">Reset</button>
+</div>
+
+<Case Query="color_of_map(Alabama, Mississippi, Georgia, Tennessee, Florida)." Context="vals">
+    <style>
+        .tennessee {
+            fill: @vals["Tennessee"];
+        }
+        .mississippi {
+            fill: @vals["Mississippi"];
+        }
+        .alabama {
+            fill: @vals["Alabama"];
+        }
+        .georgia {
+            fill: @vals["Georgia"];
+        }
+        .florida {
+            fill: @vals["Florida"];
+        }
+    </style>
+</Case>
+
+<div class="map-container">
+    <Map />
+</div>
