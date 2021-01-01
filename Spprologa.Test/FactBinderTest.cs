@@ -36,5 +36,20 @@ namespace Spprologa.Test
             binder.as_int.Is(35);
             runtime.query("age(_, N).")["N"].Is(35);
         }
+
+        [Test]
+        public void AsInt_ToNull_Test()
+        {
+            var runtime = new SpprologaRuntime(new PrologEngine(persistentCommandHistory: false));
+            runtime.PrologEngine.ConsultFromString("age(\"John Titor\", null).");
+            var binder = new FactBinder(runtime, "age(_, {0}).");
+
+            binder.as_int.IsNull();
+            binder.as_int = 36;
+            runtime.query("age(_, N).")["N"].Is(36);
+
+            binder.as_int = null;
+            runtime.query("age(_, N).")["N"].Is("null");
+        }
     }
 }

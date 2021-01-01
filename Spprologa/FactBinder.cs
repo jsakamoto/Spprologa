@@ -16,10 +16,10 @@ namespace Spprologa
             set => this.Set("\"" + (value ?? "") + "\"");
         }
 
-        public int as_int
+        public int? as_int
         {
-            get => int.TryParse(this.Get(), out var n) ? n : 0;
-            set => this.Set(value.ToString());
+            get => int.TryParse(this.Get(), out var n) ? n : null;
+            set => this.Set(value.HasValue ? value.Value.ToString() : "null");
         }
 
         private readonly SpprologaRuntime _Runtime;
