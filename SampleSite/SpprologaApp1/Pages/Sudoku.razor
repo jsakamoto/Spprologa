@@ -1,0 +1,68 @@
+﻿@page "/4x4sudoku"
+<h1>4x4 Sudoku</h1>
+
+<h2>Puzzle</h2>
+
+<fieldset disabled="@solved("sudoku_solved(yes).")">
+    <table class="sudoku-cells">
+        <tr>
+            <td><input class="sudoku-cell" @bind="@fact("cell(1,1,{0}).").as_int" /></td>
+            <td><input class="sudoku-cell" @bind="@fact("cell(1,2,{0}).").as_int" /></td>
+            <td><input class="sudoku-cell" @bind="@fact("cell(1,3,{0}).").as_int" /></td>
+            <td><input class="sudoku-cell" @bind="@fact("cell(1,4,{0}).").as_int" /></td>
+        </tr>
+        <tr>
+            <td><input class="sudoku-cell" @bind="@fact("cell(2,1,{0}).").as_int" /></td>
+            <td><input class="sudoku-cell" @bind="@fact("cell(2,2,{0}).").as_int" /></td>
+            <td><input class="sudoku-cell" @bind="@fact("cell(2,3,{0}).").as_int" /></td>
+            <td><input class="sudoku-cell" @bind="@fact("cell(2,4,{0}).").as_int" /></td>
+        </tr>
+        <tr>
+            <td><input class="sudoku-cell" @bind="@fact("cell(3,1,{0}).").as_int" /></td>
+            <td><input class="sudoku-cell" @bind="@fact("cell(3,2,{0}).").as_int" /></td>
+            <td><input class="sudoku-cell" @bind="@fact("cell(3,3,{0}).").as_int" /></td>
+            <td><input class="sudoku-cell" @bind="@fact("cell(3,4,{0}).").as_int" /></td>
+        </tr>
+        <tr>
+            <td><input class="sudoku-cell" @bind="@fact("cell(4,1,{0}).").as_int" /></td>
+            <td><input class="sudoku-cell" @bind="@fact("cell(4,2,{0}).").as_int" /></td>
+            <td><input class="sudoku-cell" @bind="@fact("cell(4,3,{0}).").as_int" /></td>
+            <td><input class="sudoku-cell" @bind="@fact("cell(4,4,{0}).").as_int" /></td>
+        </tr>
+    </table>
+</fieldset>
+
+<div>
+    <button class="btn btn-primary" @onclick="@(then("resolve_sudoku."))" disabled="@solved("sudoku_solved(yes).")">Resolve</button>
+    <button class="btn btn-primary" @onclick="@(then("reedit_sudoku."))" disabled="@solved("sudoku_solved(no).")">Edit puzzle</button>
+    <button class="btn btn-primary" @onclick="@(then("reset_sudoku."))" disabled="@solved("sudoku_solved(no).")">Reset</button>
+    <div class="alert alert-warning mt-4" role="alert">
+        <b>Notice:</b> Resolving will take a few seconds, and the browser will be <b>frozen</b> until resolved.
+    </div>
+</div>
+
+<Case Query="sudoku_solution([S11, S12, S13, S14, S21, S22, S23, S24, S31, S32, S33, S34, S41, S42, S43, S44])." Context="sln">
+    <h2>Solution</h2>
+    <table class="sudoku-cells">
+        <tr><td>@sln["S11"]</td><td>@sln["S12"]</td><td>@sln["S13"]</td><td>@sln["S14"]</td></tr>
+        <tr><td>@sln["S21"]</td><td>@sln["S22"]</td><td>@sln["S23"]</td><td>@sln["S24"]</td></tr>
+        <tr><td>@sln["S31"]</td><td>@sln["S32"]</td><td>@sln["S33"]</td><td>@sln["S34"]</td></tr>
+        <tr><td>@sln["S41"]</td><td>@sln["S42"]</td><td>@sln["S43"]</td><td>@sln["S44"]</td></tr>
+    </table>
+</Case>
+
+<Case Query="sudoku_solved(yes), not(predicate(sudoku_solution/1)).">
+    <h2>Solution</h2>
+    <div class="alert alert-secondary mt-4" role="alert">
+        There is no solutions.
+    </div>
+</Case>
+
+@code {
+    protected override void OnInitialized()
+    {
+        query("reset_sudoku.");
+    }
+}
+
+<SampleCodeDisplay Component="this" PageName="sudoku" />

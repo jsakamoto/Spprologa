@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -8,6 +8,7 @@
     <None Remove="Pages\Counter.razor.prolog" />
     <None Remove="Pages\Index.razor.prolog" />
     <None Remove="Pages\MapColoring.razor.prolog" />
+    <None Remove="Pages\Sudoku.razor.prolog" />
     <None Remove="Shared\NavMenu.razor.prolog" />
     <None Remove="Shared\SampleCodeDisplay.razor.prolog" />
   </ItemGroup>
@@ -18,7 +19,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.1" PrivateAssets="all" />
+    <!--<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.1" PrivateAssets="all" />-->
+    <PackageReference Include="Toolbelt.Blazor.DevServer.WithCssLiveReloader" Version="5.0.1" />
     <PackageReference Include="PublishSPAforGitHubPages.Build" Version="1.2.0" />
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
   </ItemGroup>
@@ -27,7 +29,7 @@
     <ProjectReference Include="..\..\Spprologa\Spprologa.csproj" />
   </ItemGroup>
   <ItemGroup Condition=" '$(Configuration)' == 'Release' ">
-    <PackageReference Include="Spprologa" Version="0.0.1-preview.1.0.0.0" />
+    <PackageReference Include="Spprologa" Version="0.0.1-preview.2.0.0.0" />
   </ItemGroup>
 
   <ItemGroup>

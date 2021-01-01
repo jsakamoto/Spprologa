@@ -1,0 +1,17 @@
+﻿.sudoku-cells {
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+    .sudoku-cells td {
+        border: solid 1px #ccc;
+        width: 2em;
+        height: 2em;
+        text-align: center;
+        font-size: 20px;
+    }
+
+        .sudoku-cells td input.sudoku-cell {
+            width: 100%;
+            text-align: center;
+        }
