@@ -106,6 +106,19 @@ namespace Spprologa.Test
         }
 
         [Test]
+        public void query_Cause_Changes_Test()
+        {
+            var runtime = new SpprologaRuntime(new PrologEngine(persistentCommandHistory: false));
+            runtime.PrologEngine.ConsultFromString(
+                "solved(no).\r\n" +
+                "resolve :- retract(solved(_)), asserta(solved(yes)).");
+
+            runtime.query("solved(X).")["X"].Is("no");
+            runtime.query("resolve.");
+            runtime.query("solved(X).")["X"].Is("yes");
+        }
+
+        [Test]
         public void solved_Test()
         {
             var runtime = new SpprologaRuntime(new PrologEngine(persistentCommandHistory: false));

@@ -1,5 +1,6 @@
 v.0.0.1-preview.2
 - Change: "FactBinder.as_int" can be null.
+- Improve: "query" method cause effects without any solution enumerations.
 
 v.0.0.1-preview.1
 - First preview release.
