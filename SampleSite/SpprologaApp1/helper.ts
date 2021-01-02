@@ -12,3 +12,5 @@ function onInput(ev: Event): void {
     }
     srcElement.dataset.prevValue = prevValue || '';
 }
+
+// This sample source codes are distributed under The Unlicense. (https://unlicense.org/)

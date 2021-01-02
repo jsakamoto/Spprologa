@@ -41,3 +41,4 @@ reset_map_coloring :-
     retract(solved(_)),
     assert(solved(no)), !.
     
+% This sample source codes are distributed under The Unlicense. (https://unlicense.org/)

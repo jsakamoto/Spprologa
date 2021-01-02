@@ -38,3 +38,5 @@ $ dotnet watch run
 ## License
 
 [Mozilla Public License Version 2.0](https://github.com/jsakamoto/Spprologa/blob/main/LICENSE)
+
+(The source codes of sample site are distributed under [The Unlicense](https://unlicense.org/).)

@@ -64,3 +64,5 @@ namespace SpprologaApp1.Shared
         }
     }
 }
+
+// This sample source codes are distributed under The Unlicense. (https://unlicense.org/)

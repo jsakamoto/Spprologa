@@ -25,3 +25,5 @@ toggle_showhide_code :-
 toggle_showhide_code :-
 	current_page(P),
 	assert(show_sample_code(P, yes)), !.
+
+% This sample source codes are distributed under The Unlicense. (https://unlicense.org/)

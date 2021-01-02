@@ -12,3 +12,4 @@ toggle_navmenu :-
 	retract(navmenu_css_class(_)),
 	assert(navmenu_css_class(collapse)), !.
 
+% This sample source codes are distributed under The Unlicense. (https://unlicense.org/)

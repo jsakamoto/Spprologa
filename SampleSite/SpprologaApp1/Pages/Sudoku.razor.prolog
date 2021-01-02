@@ -69,3 +69,5 @@ inputlist(N, InputList) :-
     inputlist(Val, LeftList, InputList).
 inputlist(null, LeftList, [_|LeftList]). 
 inputlist(Val, LeftList, [Val|LeftList]). 
+
+% This sample source codes are distributed under The Unlicense. (https://unlicense.org/)
