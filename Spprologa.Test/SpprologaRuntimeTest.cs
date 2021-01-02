@@ -1,7 +1,5 @@
-using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components;
 using NUnit.Framework;
 using Spprologa.CSProlog;
 
@@ -122,6 +120,14 @@ namespace Spprologa.Test
         }
 
         [Test]
+        public void query_Cause_Exception_Test()
+        {
+            var runtime = new SpprologaRuntime(new CSPrologEngineAdapter());
+            runtime.PrologEngine.ConsultFromString("human(socrates).");
+            Assert.Throws<PrologException>(() => runtime.query("human(X")); // Parentheses are not closed.
+        }
+
+        [Test]
         public void solved_Test()
         {
             var runtime = new SpprologaRuntime(new CSPrologEngineAdapter());
@@ -138,6 +144,14 @@ namespace Spprologa.Test
         }
 
         [Test]
+        public void solved_Cause_Exception_Test()
+        {
+            var runtime = new SpprologaRuntime(new CSPrologEngineAdapter());
+            runtime.PrologEngine.ConsultFromString("solved(yes).");
+            Assert.Throws<PrologException>(() => runtime.solved("solv ed(yes)")); // Unexpected whitespace
+        }
+
+        [Test]
         public void unsolved_Test()
         {
             var runtime = new SpprologaRuntime(new CSPrologEngineAdapter());
@@ -151,6 +165,14 @@ namespace Spprologa.Test
             runtime.unsolved("solved(yes)").IsFalse();
             runtime.unsolved("solved(X)").IsFalse();
             runtime.unsolved("solved(no)").IsTrue();
+        }
+
+        [Test]
+        public void unsolved_Cause_Exception_Test()
+        {
+            var runtime = new SpprologaRuntime(new CSPrologEngineAdapter());
+            runtime.PrologEngine.ConsultFromString("solved(yes).");
+            Assert.Throws<PrologException>(() => runtime.unsolved("solved(no)..")); // too many period
         }
 
         [Test]
@@ -177,6 +199,20 @@ namespace Spprologa.Test
             runtime.query("solved(X).").ToString().Is("no");
             await runtime.then("resolve").Invoke(); // no period query
             runtime.query("solved(X).").ToString().Is("yes");
+        }
+
+        [Test]
+        public async Task then_Cause_Exception_Test()
+        {
+            var runtime = new SpprologaRuntime(new CSPrologEngineAdapter());
+            runtime.PrologEngine.ConsultFromString(
+                "solved(no).\r\n" +
+                "resolve :- retarct(solved(_)), asserta(solved(yes))."); // spell miss of "retract/1"
+
+            var exception = default(PrologException);
+            try { await runtime.then("resolve").Invoke(); }
+            catch (PrologException e) { exception = e; }
+            exception.IsNotNull();
         }
     }
 }
