@@ -25,7 +25,7 @@ namespace Spprologa.Components
 
         private SpprologaRuntime GetSpprologaRuntime()
         {
-            if (this.SpprologaRuntime == null) throw new Exception();
+            if (this.SpprologaRuntime == null) throw new InvalidOperationException("SpprologaRuntime is not injected yet.");
             this.SpprologaRuntime.EnsureConsulted(this);
             return this.SpprologaRuntime;
         }
