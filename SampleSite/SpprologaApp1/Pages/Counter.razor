@@ -2,9 +2,9 @@
 
 <h1>Counter</h1>
 
-<p>Current count: @query("count(X).")</p>
+<p>Current count: @query("count(X)")</p>
 
-<button class="btn btn-primary" @onclick="@(then("count_up."))">Click me</button>
+<button class="btn btn-primary" @onclick="@(then("count_up"))">Click me</button>
 
 <SampleCodeDisplay Component="this" PageName="counter" />
 

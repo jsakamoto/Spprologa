@@ -9,10 +9,10 @@
     </span>
 </div>
 
-<h2>Hello, @query("your_name(X).")!</h2>
+<h2>Hello, @query("your_name(X)")!</h2>
 
 <div>
-    <input type="text" @bind="@fact("your_name({0}).").as_string" @bind:event="oninput" />
+    <input type="text" @bind="@fact("your_name({0})").as_string" @bind:event="oninput" />
 </div>
 
 <SampleCodeDisplay Component="this" PageName="index" />

@@ -40,7 +40,7 @@ namespace Spprologa
         private void Set(string value)
         {
             this._Runtime.query("retractall(" + string.Format(this._Query, "_").TrimEnd('.') + ").").FirstOrDefault();
-            this._Runtime.query("assert(" + string.Format(this._Query, value).TrimEnd('.') + ").").FirstOrDefault();
+            this._Runtime.query("asserta(" + string.Format(this._Query, value).TrimEnd('.') + ").").FirstOrDefault();
         }
     }
 }

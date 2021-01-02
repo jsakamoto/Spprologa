@@ -39,12 +39,12 @@ namespace Spprologa
 
         public ISolutionCollection query(string query)
         {
-            return this.PrologEngine.Query(query);
+            return this.PrologEngine.Query(CompletionEndOfPeriod(query));
         }
 
         public Func<Task> then(string query)
         {
-            return () => this.PrologEngine.QueryAsync(query);
+            return () => this.PrologEngine.QueryAsync(CompletionEndOfPeriod(query));
         }
 
         public bool solved(string query)
@@ -55,6 +55,11 @@ namespace Spprologa
         public bool unsolved(string query)
         {
             return !this.query(query).Any();
+        }
+
+        private string CompletionEndOfPeriod(string query)
+        {
+            return query.EndsWith('.') ? query : query + ".";
         }
     }
 }

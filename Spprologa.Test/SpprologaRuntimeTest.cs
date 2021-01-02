@@ -18,6 +18,7 @@ namespace Spprologa.Test
                 "human(aristotle).");
 
             runtime.query("human(X).").ToString().Is("socrates");
+            runtime.query("human(X)").ToString().Is("socrates"); // no period version
         }
 
         [Test]
@@ -125,9 +126,15 @@ namespace Spprologa.Test
         {
             var runtime = new SpprologaRuntime(new CSPrologEngineAdapter());
             runtime.PrologEngine.ConsultFromString("solved(yes).");
+
             runtime.solved("solved(yes).").IsTrue();
             runtime.solved("solved(X).").IsTrue();
             runtime.solved("solved(no).").IsFalse();
+
+            // no period version
+            runtime.solved("solved(yes)").IsTrue();
+            runtime.solved("solved(X)").IsTrue();
+            runtime.solved("solved(no)").IsFalse();
         }
 
         [Test]
@@ -135,9 +142,15 @@ namespace Spprologa.Test
         {
             var runtime = new SpprologaRuntime(new CSPrologEngineAdapter());
             runtime.PrologEngine.ConsultFromString("solved(yes).");
+
             runtime.unsolved("solved(yes).").IsFalse();
             runtime.unsolved("solved(X).").IsFalse();
             runtime.unsolved("solved(no).").IsTrue();
+
+            // no period version
+            runtime.unsolved("solved(yes)").IsFalse();
+            runtime.unsolved("solved(X)").IsFalse();
+            runtime.unsolved("solved(no)").IsTrue();
         }
 
         [Test]
@@ -150,6 +163,19 @@ namespace Spprologa.Test
 
             runtime.query("solved(X).").ToString().Is("no");
             await runtime.then("resolve.").Invoke();
+            runtime.query("solved(X).").ToString().Is("yes");
+        }
+
+        [Test]
+        public async Task then_NoPeriod_Test()
+        {
+            var runtime = new SpprologaRuntime(new CSPrologEngineAdapter());
+            runtime.PrologEngine.ConsultFromString(
+                "solved(no).\r\n" +
+                "resolve :- retract(solved(_)), asserta(solved(yes)).");
+
+            runtime.query("solved(X).").ToString().Is("no");
+            await runtime.then("resolve").Invoke(); // no period query
             runtime.query("solved(X).").ToString().Is("yes");
         }
     }

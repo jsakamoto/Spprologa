@@ -22,6 +22,22 @@ namespace Spprologa.Test
         }
 
         [Test]
+        public void AsString_NoPeriod_Test()
+        {
+            var runtime = new SpprologaRuntime(new CSPrologEngineAdapter());
+            runtime.PrologEngine.ConsultFromString("name(\"John Titor\").");
+            var binder = new FactBinder(runtime, "name({0})"); // no period
+
+            binder.as_string.Is("John Titor");
+            runtime.query("name(X).").ToString().Is("John Titor");
+
+            binder.as_string = "John Connor";
+
+            binder.as_string.Is("John Connor");
+            runtime.query("name(X).").ToString().Is("John Connor");
+        }
+
+        [Test]
         public void AsInt_Test()
         {
             var runtime = new SpprologaRuntime(new CSPrologEngineAdapter());
