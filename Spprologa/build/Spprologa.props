@@ -1,0 +1,5 @@
+﻿<Project>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildProjectDirectory)\**\*.prolog" />
+  </ItemGroup>
+</Project>

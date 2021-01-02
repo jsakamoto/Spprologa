@@ -1,3 +1,7 @@
+v.0.0.1-preview.3
+- "*.prolog" files will be embedded automatically if the project references the Spprologa NuGet package.
+- SpprologaComponentBase - Bundled Prolog code always be consulted even if any operations didn't happen on the component.
+
 v.0.0.1-preview.2
 - Change: "FactBinder.as_int" can be null.
 - Improve: "query" method cause effects without any solution enumerations.
