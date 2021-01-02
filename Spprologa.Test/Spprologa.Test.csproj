@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Spprologa\Spprologa.csproj" />
+    <ProjectReference Include="..\Spprologa.CSProlog\Spprologa.CSProlog.csproj" />
   </ItemGroup>
 
 </Project>

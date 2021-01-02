@@ -14,10 +14,10 @@
   </ItemGroup>
 
   <ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <ProjectReference Include="..\..\Spprologa\Spprologa.csproj" />
+    <ProjectReference Include="..\..\Spprologa.CSProlog\Spprologa.CSProlog.csproj" />
   </ItemGroup>
   <ItemGroup Condition=" '$(Configuration)' == 'Release' ">
-    <PackageReference Include="Spprologa" Version="0.0.1-preview.3.0.0.0" />
+    <PackageReference Include="Spprologa.CSProlog" Version="0.0.1-preview.3.1.0.0" />
   </ItemGroup>
 
   <ItemGroup>

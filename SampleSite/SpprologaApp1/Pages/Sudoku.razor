@@ -41,7 +41,7 @@
     </div>
 </div>
 
-<Case Query="sudoku_solution([S11, S12, S13, S14, S21, S22, S23, S24, S31, S32, S33, S34, S41, S42, S43, S44])" Context="sln">
+<Case Query="predicate(sudoku_solution/1), sudoku_solution([S11, S12, S13, S14, S21, S22, S23, S24, S31, S32, S33, S34, S41, S42, S43, S44])" Context="sln">
     <h2>Solution</h2>
     <table class="sudoku-cells">
         <tr><td>@sln["S11"]</td><td>@sln["S12"]</td><td>@sln["S13"]</td><td>@sln["S14"]</td></tr>
