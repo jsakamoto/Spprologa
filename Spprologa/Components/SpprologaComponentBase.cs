@@ -8,7 +8,7 @@ namespace Spprologa.Components
     public class SpprologaComponentBase : ComponentBase
     {
         [Inject]
-        private SpprologaRuntime? SpprologaRuntime { get; set; }
+        private ISpprologaRuntime? SpprologaRuntime { get; set; }
 
         private readonly Dictionary<string, FactBinder> _FactBindersCache = new();
 
@@ -23,7 +23,7 @@ namespace Spprologa.Components
             return Task.CompletedTask;
         }
 
-        private SpprologaRuntime GetSpprologaRuntime()
+        private ISpprologaRuntime GetSpprologaRuntime()
         {
             if (this.SpprologaRuntime == null) throw new InvalidOperationException("SpprologaRuntime is not injected yet.");
             this.SpprologaRuntime.EnsureConsulted(this);
@@ -39,7 +39,7 @@ namespace Spprologa.Components
             return binder;
         }
 
-        protected Solutions query(string query) => this.GetSpprologaRuntime().query(query);
+        protected ISolutionCollection query(string query) => this.GetSpprologaRuntime().query(query);
 
         protected EventCallback then(string query) => this.GetSpprologaRuntime().then(this, query);
 

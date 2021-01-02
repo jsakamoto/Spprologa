@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using Prolog;
+using Spprologa.CSProlog;
 
 namespace Spprologa.Test
 {
@@ -8,7 +8,7 @@ namespace Spprologa.Test
         [Test]
         public void AsString_Test()
         {
-            var runtime = new SpprologaRuntime(new PrologEngine(persistentCommandHistory: false));
+            var runtime = new SpprologaRuntime(new CSPrologEngineAdapter());
             runtime.PrologEngine.ConsultFromString("name(\"John Titor\").");
             var binder = new FactBinder(runtime, "name({0}).");
 
@@ -24,7 +24,7 @@ namespace Spprologa.Test
         [Test]
         public void AsInt_Test()
         {
-            var runtime = new SpprologaRuntime(new PrologEngine(persistentCommandHistory: false));
+            var runtime = new SpprologaRuntime(new CSPrologEngineAdapter());
             runtime.PrologEngine.ConsultFromString("age(\"John Titor\", 34).");
             var binder = new FactBinder(runtime, "age(_, {0}).");
 
@@ -40,7 +40,7 @@ namespace Spprologa.Test
         [Test]
         public void AsInt_ToNull_Test()
         {
-            var runtime = new SpprologaRuntime(new PrologEngine(persistentCommandHistory: false));
+            var runtime = new SpprologaRuntime(new CSPrologEngineAdapter());
             runtime.PrologEngine.ConsultFromString("age(\"John Titor\", null).");
             var binder = new FactBinder(runtime, "age(_, {0}).");
 

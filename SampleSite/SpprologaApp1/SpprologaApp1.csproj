@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +22,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Pages\*.razor" />
+    <EmbeddedResource Include="**\*.prolog" />
   </ItemGroup>
 
   <!-- This sample source codes are distributed under The Unlicense. (https://unlicense.org/) -->

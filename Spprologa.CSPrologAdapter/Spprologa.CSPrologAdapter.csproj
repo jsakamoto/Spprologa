@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Version>0.0.1-preview.3.0.0.0</Version>
@@ -20,17 +20,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <SupportedPlatform Include="browser" />
-    <PackageReference Include="Microsoft.AspNetCore.Components" Version="5.0.0" />
+    <PackageReference Include="CSProlog" Version="6.0.0" />
     <ProjectReference Include="..\Spprologa.Abstractions\Spprologa.Abstractions.csproj" />
-    <ProjectReference Include="..\Spprologa.CSPrologAdapter\Spprologa.CSPrologAdapter.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="build\*">
-      <PackagePath>build\%(Filename)%(Extension)</PackagePath>
-      <Pack>true</Pack>
-    </None>
     <None Include="..\.assets\nupkg-icon.png" Visible="false">
       <Pack>True</Pack>
       <PackagePath></PackagePath>

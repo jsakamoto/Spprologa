@@ -1,35 +1,23 @@
 ﻿using System.Linq;
 using Prolog;
 
-namespace Spprologa
+namespace Spprologa.CSProlog
 {
-    public class Solution
+    internal class CSPrologSolution : ISolution
     {
         private readonly PrologEngine.ISolution _Solution;
 
-        public Solution(PrologEngine.ISolution solution)
-        {
-            this._Solution = solution;
-        }
+        public object? this[string varName] => GetVarVlaue(_Solution, varName);
 
-        public object? this[string varName]
+        public CSPrologSolution(PrologEngine.ISolution solution)
         {
-            get
-            {
-                return GetVarVlaue(_Solution, varName);
-            }
+            _Solution = solution;
         }
 
         public override string? ToString()
         {
             var varvalue = _Solution.VarValuesIterator.FirstOrDefault(v => v.DataType != "namedvar");
             if (varvalue == null) return null;
-
-            //foreach (var varval in solution.VarValuesIterator)
-            //{
-            //    Console.WriteLine($"{varval.Name} = {varval.Value} ({varval.DataType})");
-            //}
-
             return varvalue.Value.ToString();
         }
 

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using Prolog;
 
-namespace Spprologa
+namespace Spprologa.CSProlog
 {
-    public class Solutions : IEnumerable<Spprologa.Solution>
+    internal class CSPrologSolutionCollection : ISolutionCollection
     {
         private readonly IEnumerator<PrologEngine.ISolution> _Enumarator;
 
         private readonly PrologEngine.ISolution? _FirstSolution;
 
-        public Solutions(IEnumerable<PrologEngine.ISolution> solutions)
+        public CSPrologSolutionCollection(IEnumerable<PrologEngine.ISolution> solutions)
         {
             _Enumarator = solutions.Where(sln => sln.Solved).GetEnumerator();
             if (_Enumarator.MoveNext()) _FirstSolution = _Enumarator.Current;
@@ -25,16 +25,16 @@ namespace Spprologa
             var varvalue = solution.VarValuesIterator.FirstOrDefault(v => v.DataType != "namedvar");
             if (varvalue == null) return null;
 
-            return Solution.GetVarValue(varvalue)?.ToString();
+            return CSPrologSolution.GetVarValue(varvalue)?.ToString();
         }
 
-        public IEnumerator<Solution> GetEnumerator()
+        public IEnumerator<ISolution> GetEnumerator()
         {
             if (_FirstSolution == null) yield break;
-            yield return new Solution(_FirstSolution);
+            yield return new CSPrologSolution(_FirstSolution);
             while (_Enumarator.MoveNext())
             {
-                yield return new Solution(_Enumarator.Current);
+                yield return new CSPrologSolution(_Enumarator.Current);
             }
         }
 
@@ -46,7 +46,7 @@ namespace Spprologa
             {
                 var solution = _FirstSolution;
                 if (solution == null) return null;
-                return Solution.GetVarVlaue(solution, varName);
+                return CSPrologSolution.GetVarVlaue(solution, varName);
             }
         }
     }

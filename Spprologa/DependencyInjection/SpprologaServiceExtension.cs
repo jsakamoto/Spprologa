@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Prolog;
+using Spprologa.CSProlog;
 
 namespace Spprologa.DependencyInjection
 {
@@ -8,12 +8,8 @@ namespace Spprologa.DependencyInjection
     {
         public static IServiceCollection AddSpprologa(this IServiceCollection services)
         {
-            services.TryAddScoped<SpprologaRuntime>();
-            services.TryAddScoped(_ =>
-            {
-                var prologEngine = new PrologEngine(persistentCommandHistory: false);
-                return prologEngine;
-            });
+            services.TryAddScoped<IPrologEngine, CSPrologEngineAdapter>();
+            services.TryAddScoped<ISpprologaRuntime, SpprologaRuntime>();
             return services;
         }
     }

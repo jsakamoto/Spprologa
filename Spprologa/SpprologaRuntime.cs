@@ -7,13 +7,13 @@ using Prolog;
 
 namespace Spprologa
 {
-    public class SpprologaRuntime
+    public class SpprologaRuntime : ISpprologaRuntime
     {
-        public PrologEngine PrologEngine { get; private set; }
+        public IPrologEngine PrologEngine { get; private set; }
 
         private readonly HashSet<string> ConsultedResourceNames = new();
 
-        public SpprologaRuntime(PrologEngine prologEngine)
+        public SpprologaRuntime(IPrologEngine prologEngine)
         {
             PrologEngine = prologEngine;
         }
@@ -36,20 +36,14 @@ namespace Spprologa
             this.PrologEngine.ConsultFromString(prologCode);
         }
 
-        public Solutions query(string query)
+        public ISolutionCollection query(string query)
         {
-            this.PrologEngine.Query = query;
-            return new Solutions(this.PrologEngine.GetEnumerator());
+            return this.PrologEngine.Query(query);
         }
 
         public EventCallback then(object receiver, string query)
         {
-            var prologEngine = this.PrologEngine;
-            return EventCallback.Factory.Create(receiver, () =>
-            {
-                prologEngine.Query = query;
-                prologEngine.GetEnumerator().FirstOrDefault();
-            });
+            return EventCallback.Factory.Create(receiver, () => this.PrologEngine.Query(query));
         }
 
         public bool solved(string query)

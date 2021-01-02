@@ -22,11 +22,11 @@ namespace Spprologa
             set => this.Set(value.HasValue ? value.Value.ToString() : "null");
         }
 
-        private readonly SpprologaRuntime _Runtime;
+        private readonly ISpprologaRuntime _Runtime;
 
         private readonly string _Query;
 
-        public FactBinder(SpprologaRuntime runtime, string query)
+        public FactBinder(ISpprologaRuntime runtime, string query)
         {
             this._Runtime = runtime;
             this._Query = query;
