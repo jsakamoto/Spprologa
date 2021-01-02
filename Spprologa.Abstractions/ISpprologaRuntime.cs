@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components;
 
 namespace Spprologa
 {
@@ -8,7 +10,7 @@ namespace Spprologa
 
         ISolutionCollection query(string query);
 
-        EventCallback then(object receiver, string query);
+        Func<Task> then(string query);
 
         bool solved(string query);
 

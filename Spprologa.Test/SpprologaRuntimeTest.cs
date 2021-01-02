@@ -1,4 +1,7 @@
+using System;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components;
 using NUnit.Framework;
 using Spprologa.CSProlog;
 
@@ -135,6 +138,19 @@ namespace Spprologa.Test
             runtime.unsolved("solved(yes).").IsFalse();
             runtime.unsolved("solved(X).").IsFalse();
             runtime.unsolved("solved(no).").IsTrue();
+        }
+
+        [Test]
+        public async Task then_Test()
+        {
+            var runtime = new SpprologaRuntime(new CSPrologEngineAdapter());
+            runtime.PrologEngine.ConsultFromString(
+                "solved(no).\r\n" +
+                "resolve :- retract(solved(_)), asserta(solved(yes)).");
+
+            runtime.query("solved(X).").ToString().Is("no");
+            await runtime.then("resolve.").Invoke();
+            runtime.query("solved(X).").ToString().Is("yes");
         }
     }
 }

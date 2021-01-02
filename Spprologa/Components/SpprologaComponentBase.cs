@@ -41,7 +41,7 @@ namespace Spprologa.Components
 
         protected ISolutionCollection query(string query) => this.GetSpprologaRuntime().query(query);
 
-        protected EventCallback then(string query) => this.GetSpprologaRuntime().then(this, query);
+        protected Func<Task> then(string query) => this.GetSpprologaRuntime().then(query);
 
         protected bool solved(string query) => this.GetSpprologaRuntime().solved(query);
 

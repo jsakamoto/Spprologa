@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Threading.Tasks;
 
 namespace Spprologa
 {
@@ -7,5 +7,7 @@ namespace Spprologa
         void ConsultFromString(string prologCode);
 
         ISolutionCollection Query(string query);
+
+        Task<ISolutionCollection> QueryAsync(string query);
     }
 }

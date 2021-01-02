@@ -1,4 +1,5 @@
-﻿using Prolog;
+﻿using System.Threading.Tasks;
+using Prolog;
 
 namespace Spprologa.CSProlog
 {
@@ -15,6 +16,11 @@ namespace Spprologa.CSProlog
         {
             _PrologEngine.Query = query;
             return new CSPrologSolutionCollection(_PrologEngine.GetEnumerator());
+        }
+
+        public Task<ISolutionCollection> QueryAsync(string query)
+        {
+            return Task.FromResult(this.Query(query));
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Prolog;
 
@@ -41,9 +42,9 @@ namespace Spprologa
             return this.PrologEngine.Query(query);
         }
 
-        public EventCallback then(object receiver, string query)
+        public Func<Task> then(string query)
         {
-            return EventCallback.Factory.Create(receiver, () => this.PrologEngine.Query(query));
+            return () => this.PrologEngine.QueryAsync(query);
         }
 
         public bool solved(string query)
