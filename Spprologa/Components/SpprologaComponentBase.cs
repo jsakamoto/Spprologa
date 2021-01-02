@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 
 namespace Spprologa.Components
@@ -11,8 +12,15 @@ namespace Spprologa.Components
 
         private readonly Dictionary<string, FactBinder> _FactBindersCache = new();
 
-        public SpprologaComponentBase()
+        protected override void OnInitialized()
         {
+            GetSpprologaRuntime();
+        }
+
+        protected override Task OnInitializedAsync()
+        {
+            GetSpprologaRuntime();
+            return Task.CompletedTask;
         }
 
         private SpprologaRuntime GetSpprologaRuntime()
