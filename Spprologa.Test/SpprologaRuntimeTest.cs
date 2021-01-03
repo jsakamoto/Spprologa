@@ -183,8 +183,9 @@ namespace Spprologa.Test
                 "solved(no).\r\n" +
                 "resolve :- retract(solved(_)), asserta(solved(yes)).");
 
+            var callback = runtime.then("resolve.");
             runtime.query("solved(X).").ToString().Is("no");
-            await runtime.then("resolve.").Invoke();
+            await callback.Invoke();
             runtime.query("solved(X).").ToString().Is("yes");
         }
 
@@ -196,8 +197,9 @@ namespace Spprologa.Test
                 "solved(no).\r\n" +
                 "resolve :- retract(solved(_)), asserta(solved(yes)).");
 
+            var callback = runtime.then("resolve"); // no period query
             runtime.query("solved(X).").ToString().Is("no");
-            await runtime.then("resolve").Invoke(); // no period query
+            await callback.Invoke();
             runtime.query("solved(X).").ToString().Is("yes");
         }
 
@@ -209,8 +211,9 @@ namespace Spprologa.Test
                 "solved(no).\r\n" +
                 "resolve :- retarct(solved(_)), asserta(solved(yes))."); // spell miss of "retract/1"
 
+            var callback = runtime.then("resolve");
             var exception = default(PrologException);
-            try { await runtime.then("resolve").Invoke(); }
+            try { await callback.Invoke(); }
             catch (PrologException e) { exception = e; }
             exception.IsNotNull();
         }
