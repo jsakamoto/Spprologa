@@ -1,3 +1,11 @@
+v.0.0.1-preview.4
+- C#Prolog implementation package also includes MSBuild script.
+- Add error checking.
+- Allow queries that don't end with a period.
+- Add async query support, and simplify "then()" method interface/implements.
+- Split abstraction layer and split dependence on C#Prolog.
+- SpprologaComponentBase - improve exception message to be described in more detail.
+
 v.0.0.1-preview.3
 - "*.prolog" files will be embedded automatically if the project references the Spprologa NuGet package.
 - SpprologaComponentBase - Bundled Prolog code always be consulted even if any operations didn't happen on the component.

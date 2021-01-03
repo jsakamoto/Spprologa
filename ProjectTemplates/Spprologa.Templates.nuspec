@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Spprologa.Templates</id>
-    <version>0.0.1-preview.3.0.0.0</version>
+    <version>0.0.1-preview.4.0.0.0</version>
     <description>
       Templates for "Spprologa" app to build client web apps with Prolog.
     </description>

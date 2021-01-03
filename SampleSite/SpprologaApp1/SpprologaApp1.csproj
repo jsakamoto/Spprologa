@@ -17,7 +17,7 @@
     <ProjectReference Include="..\..\Spprologa.CSProlog\Spprologa.CSProlog.csproj" />
   </ItemGroup>
   <ItemGroup Condition=" '$(Configuration)' == 'Release' ">
-    <PackageReference Include="Spprologa.CSProlog" Version="0.0.1-preview.3.1.0.2" />
+    <PackageReference Include="Spprologa.CSProlog" Version="0.0.1-preview.4.0.0.0" />
   </ItemGroup>
 
   <ItemGroup>
