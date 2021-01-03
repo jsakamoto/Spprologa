@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>0.0.1-preview.3.1.0.0</Version>
+    <Version>0.0.1-preview.3.1.0.2</Version>
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
     <WarningsAsErrors>nullable</WarningsAsErrors>
@@ -25,6 +25,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="build\*">
+      <PackagePath>build\%(Filename)%(Extension)</PackagePath>
+      <Pack>true</Pack>
+    </None>
     <None Include="..\.assets\nupkg-icon.png" Visible="false">
       <Pack>True</Pack>
       <PackagePath></PackagePath>

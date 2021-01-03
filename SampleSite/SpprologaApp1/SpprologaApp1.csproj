@@ -17,12 +17,12 @@
     <ProjectReference Include="..\..\Spprologa.CSProlog\Spprologa.CSProlog.csproj" />
   </ItemGroup>
   <ItemGroup Condition=" '$(Configuration)' == 'Release' ">
-    <PackageReference Include="Spprologa.CSProlog" Version="0.0.1-preview.3.1.0.0" />
+    <PackageReference Include="Spprologa.CSProlog" Version="0.0.1-preview.3.1.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Pages\*.razor" />
-    <EmbeddedResource Include="**\*.prolog" />
+    <EmbeddedResource Include="**\*.prolog" Condition=" '$(Configuration)' == 'Debug' " />
   </ItemGroup>
 
   <!-- This sample source codes are distributed under The Unlicense. (https://unlicense.org/) -->
