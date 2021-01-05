@@ -1,0 +1,27 @@
+name: test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the code
+      - uses: actions/checkout@v2
+
+      # Install .NET Core SDK
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.101
+
+      # Build
+      - name: Build
+        run: dotnet build --nologo
+
+      # Run the unit test
+      - name: Run the unit test
+        run: dotnet test -v:n --no-build --nologo
