@@ -1,4 +1,4 @@
-# Spprologa [![NuGet Package](https://img.shields.io/nuget/v/Spprologa.CSProlog.svg)](https://www.nuget.org/packages/Spprologa.CSProlog/)
+# Spprologa [![NuGet Package](https://img.shields.io/nuget/v/Spprologa.CSProlog.svg)](https://www.nuget.org/packages/Spprologa.CSProlog/) [![Actions Status](https://github.com/jsakamoto/Spprologa/workflows/test/badge.svg)](https://github.com/jsakamoto/Spprologa/actions?query=workflow%3Atest) [![License](https://img.shields.io/github/license/jsakamoto/Spprologa)](https://github.com/jsakamoto/Spprologa/blob/main/LICENSE)
 
 ## _"Build client web apps with Prolog."_
 
